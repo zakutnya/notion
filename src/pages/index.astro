@@ -2,7 +2,13 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 
-const posts = (await Astro.glob("../../content/posts/*.md")) || [];
+let posts = null;
+
+try {
+    posts = await Astro.glob("../../content/posts/**/*.md");
+} catch (e) {
+    //
+}
 // TODO: https://blog.otterlord.dev/posts/astro-search/
 ---
 
@@ -11,15 +17,17 @@ const posts = (await Astro.glob("../../content/posts/*.md")) || [];
         <h1>Welcome to <span class="text-gradient">Astro</span></h1>
         <ul role="list" class="link-card-grid">
             {
-                posts.map((post) => {
-                    return (
-                        <Card
-                            href="https://docs.astro.build/"
-                            title={post.frontmatter.title}
-                            body="Learn how Astro works and explore the official API docs."
-                        />
-                    );
-                })
+                posts &&
+                    posts.length &&
+                    posts.map((post) => {
+                        return (
+                            <Card
+                                href="https://docs.astro.build/"
+                                title={post.frontmatter.title}
+                                body="Learn how Astro works and explore the official API docs."
+                            />
+                        );
+                    })
             }
         </ul>
     </main>
