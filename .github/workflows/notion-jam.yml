@@ -4,46 +4,60 @@ name: NotionJAM
 
 # Controls when the workflow will run
 on:
-  schedule:
-    - cron: "*/10 * * * *" # every 5 minutes
-  push:
-    branches: [master, main]
+    schedule:
+        - cron: "*/10 * * * *" # every 5 minutes
+    push:
+        branches: [master, main]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    # This workflow contains a single job called "build"
+    build:
+        # The type of runner that the job will run on
+        runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
+        permissions:
+            contents: write
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+        # Steps represent a sequence of tasks that will be executed as part of the job
+        steps:
+            # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+            - uses: actions/checkout@v3
 
-      - name: notion-jam
-        uses: victornpb/notion-jam@v0.0.10
-        with:
-          NOTION_SECRET: ${{ secrets.NOTION_SECRET }}
-          NOTION_DATABASE: d3093d5c8d0c499ea68785f14409b144
-          FILTER_PROP: Status
-          FILTER_VALUES: Published
-          CONVERT_PROP_CASE: snake
-          ARTICLE_PATH: content/posts/{title}.md
-          ASSETS_PATH: ./
-          PARALLEL_PAGES: 25
-          PARALLEL_DOWNLOADS_PER_PAGE: 3
-          DOWNLOAD_IMAGE_TIMEOUT: 30
-          SKIP_DOWNLOADED_IMAGES: true
-          DOWNLOAD_FRONTMATTER_IMAGES: true
-      
-      - name: Save changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Commit changes
+            - name: Get notion posts
+              uses: victornpb/notion-jam@v0.0.10
+              with:
+                  NOTION_SECRET: ${{ secrets.NOTION_SECRET }}
+                  NOTION_DATABASE: d3093d5c8d0c499ea68785f14409b144
+                  FILTER_PROP: Status
+                  FILTER_VALUES: Published
+                  CONVERT_PROP_CASE: snake
+                  ARTICLE_PATH: content/posts/{title}.md
+                  ASSETS_PATH: ./
+                  PARALLEL_PAGES: 25
+                  PARALLEL_DOWNLOADS_PER_PAGE: 3
+                  DOWNLOAD_IMAGE_TIMEOUT: 30
+                  SKIP_DOWNLOADED_IMAGES: true
+                  DOWNLOAD_FRONTMATTER_IMAGES: true
+
+            - name: Install, build, and upload your site
+              uses: withastro/action@v2
+
+            - name: Save changes
+              uses: stefanzweifel/git-auto-commit-action@v4
+              with:
+                  commit_message: Commit changes
+
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        steps:
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
