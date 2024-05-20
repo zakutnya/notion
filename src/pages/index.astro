@@ -1,15 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+import { getCollection } from "astro:content";
 
 let posts = null;
 
 try {
-    posts = await Astro.glob("../../content/posts/**/*.md");
+    posts = await getCollection("posts");
 } catch (e) {
+    console.log(e);
     //
 }
 // TODO: https://blog.otterlord.dev/posts/astro-search/
+// https://shayy.org/posts/fts-for-astro
 ---
 
 <Layout title="Welcome to Astro.">
@@ -22,9 +25,11 @@ try {
                     posts.map((post) => {
                         return (
                             <Card
-                                href="https://docs.astro.build/"
-                                title={post.frontmatter.title}
-                                body="Learn how Astro works and explore the official API docs."
+                                href={`${import.meta.env.BASE_URL}/posts/${post.slug}`}
+                                title={post.data.title}
+                                body={new Date(post.data.created_time).toLocaleDateString("ru", {
+                                    dateStyle: "long",
+                                })}
                             />
                         );
                     })
