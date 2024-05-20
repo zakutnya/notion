@@ -35,7 +35,7 @@ jobs:
                   FILTER_PROP: Status
                   FILTER_VALUES: Published
                   CONVERT_PROP_CASE: snake
-                  ARTICLE_PATH: content/posts/{title}.md
+                  ARTICLE_PATH: content/posts/{created_time}-{title}.md
                   ASSETS_PATH: ./
                   PARALLEL_PAGES: 25
                   PARALLEL_DOWNLOADS_PER_PAGE: 3
