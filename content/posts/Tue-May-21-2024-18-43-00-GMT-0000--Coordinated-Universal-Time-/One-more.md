@@ -4,7 +4,7 @@ id:
   number: 8
 title: One more
 created_time: 2024-05-21T18:43:00.000Z
-last_edited_time: 2024-05-21T18:44:00.000Z
+last_edited_time: 2024-05-21T18:46:00.000Z
 month:
   type: string
   string: '05'
@@ -13,7 +13,7 @@ year:
   string: '2024'
 tags: []
 status: Published
-time_updated: 2024-05-21T18:44:00.000Z
+time_updated: 2024-05-21T18:46:00.000Z
 time_created: 2024-05-21T18:43:00.000Z
 time:
   type: string
@@ -21,6 +21,7 @@ time:
 day:
   type: string
   string: '21'
+_thumbnail: ./1659480122_blasmeme_vCc76i0E.png
 
 ---
 
@@ -32,4 +33,6 @@ some paragraph
 
 ## Heading 2
 
-![]()
+![](./1659480122_blasmeme_vCc76i0E.png)
+
+some paragraph
