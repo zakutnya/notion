@@ -1,7 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 import { getCollection } from "astro:content";
+import Link from "@components/Link.astro";
+import ArrowCard from "@components/ArrowCard.astro";
 
 let posts = null;
 
@@ -17,24 +18,44 @@ try {
 
 <Layout title="Welcome to Astro.">
     <main>
-        <h1>Welcome to <span class="text-gradient">Astro</span></h1>
-        <ul role="list" class="link-card-grid">
-            {
-                posts &&
-                    posts.length &&
-                    posts.map((post) => {
-                        return (
-                            <Card
-                                href={`${import.meta.env.BASE_URL}/posts/${post.slug}`}
-                                title={post.data.title}
-                                body={new Date(post.data.created_time).toLocaleDateString("ru", {
-                                    dateStyle: "long",
-                                })}
-                            />
-                        );
-                    })
-            }
-        </ul>
+        <h4 class="animate font-semibold text-black dark:text-white">
+            Hi, I'm Nano <span class="text-xl">👋🏻</span>
+        </h4>
+
+        <div class="space-y-16">
+            <section>
+                <article class="space-y-4">
+                    <p class="animate">
+                        I am a minimal, seo friendly, accessible portfolio and blog for developers. I am an even more lightweight version of
+                        my popular theme I have a lighthouse scores of 100 across the board for performance, accesibility, best practices
+                        and SEO.
+                    </p>
+                    <p class="animate">
+                        I come packed with full type safety, a sitemap, an rss feed, markdown and mdx support (use components in your
+                        markdown) through astro integrations. I am styled with tailwind and come preconfigured with light, dark and
+                        system/os theme preferences out of the box.
+                    </p>
+                    <p class="animate">Visit to fork the repository, read the docs or one-click deploy on Vercel or Netlify.</p>
+                </article>
+            </section>
+
+            <section class="animate space-y-6">
+                <div class="flex flex-wrap gap-y-2 items-center justify-between">
+                    <h5 class="font-semibold text-black dark:text-white">Latest posts</h5>
+                    <Link href="/blog"> See all posts </Link>
+                </div>
+                <ul class="flex flex-col gap-4">
+                    {
+                        posts &&
+                            posts.map((post) => (
+                                <li>
+                                    <ArrowCard entry={post} />
+                                </li>
+                            ))
+                    }
+                </ul>
+            </section>
+        </div>
     </main>
 </Layout>
 

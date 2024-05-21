@@ -35,7 +35,11 @@ jobs:
                   FILTER_PROP: Status
                   FILTER_VALUES: Published
                   CONVERT_PROP_CASE: snake
+<<<<<<< Updated upstream
                   ARTICLE_PATH: src/content/posts/{year}/{month}/{day}/{title}-{time}.md
+=======
+                  ARTICLE_PATH: content/posts/{time_created}-{title}.md
+>>>>>>> Stashed changes
                   ASSETS_PATH: ./
                   PARALLEL_PAGES: 25
                   PARALLEL_DOWNLOADS_PER_PAGE: 3
