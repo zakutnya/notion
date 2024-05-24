@@ -4,7 +4,7 @@ id:
   number: 6
 title: And another one subpage, i guess
 created_time: 2024-05-20T06:17:00.000Z
-last_edited_time: 2024-05-21T01:06:00.000Z
+last_edited_time: 2024-05-24T20:20:00.000Z
 month:
   type: string
   string: '05'
@@ -13,7 +13,7 @@ year:
   string: '2024'
 tags: []
 status: Published
-time_updated: 2024-05-21T01:06:00.000Z
+time_updated: 2024-05-24T20:20:00.000Z
 time_created: 2024-05-20T06:17:00.000Z
 time:
   type: string
