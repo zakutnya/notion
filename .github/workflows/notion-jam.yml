@@ -4,8 +4,8 @@ name: NotionJAM
 
 # Controls when the workflow will run
 on:
-    schedule:
-        - cron: "*/10 * * * *" # every 5 minutes
+    # schedule:
+    #     - cron: "*/10 * * * *" # every 5 minutes
     push:
         branches: [master, main]
 
