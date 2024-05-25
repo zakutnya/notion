@@ -25,6 +25,7 @@ jobs:
             - uses: actions/checkout@v4
             - name: Create env file
               run: |
+                  cd scrapper/
                   touch .env
                   echo NOTION_SECRET = ${{ secrets.NOTION_SECRET }} >> .env
                   echo NOTION_DB = d3093d5c8d0c499ea68785f14409b144 >> .env
@@ -36,10 +37,10 @@ jobs:
                   cache: "yarn"
 
             - name: Install deps
-              run: yarn install
+              run: yarn --cwd ./scrapper/ install
 
             - name: Run script
-              run: yarn start
+              run: yarn --cwd ./scrapper/ start
 
             - name: Save changes
               uses: stefanzweifel/git-auto-commit-action@v4
