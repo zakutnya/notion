@@ -1,0 +1,6 @@
+[submodule "notion-jam"]
+	path = notion-jam
+	url = git@github.com:zakutnya/notion-jam.git
+[submodule "scrapper"]
+	path = scrapper
+	url = git@github.com:zakutnya/notion-scrapper.git
