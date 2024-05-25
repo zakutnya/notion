@@ -28,14 +28,14 @@ jobs:
             - uses: actions/checkout@v3
 
             - name: Get notion posts
-              uses: victornpb/notion-jam@v0.0.10
+              uses: paulopotter/notion-jam
               with:
                   NOTION_SECRET: ${{ secrets.NOTION_SECRET }}
                   NOTION_DATABASE: d3093d5c8d0c499ea68785f14409b144
                   FILTER_PROP: Status
                   FILTER_VALUES: Published
                   CONVERT_PROP_CASE: snake
-                  ARTICLE_PATH: content/posts/{year.formula}/{month.formula}/{day.formula}/{title}.md
+                  ARTICLE_PATH: content/posts/{year}/{month}/{day}/{title}.md
                   ASSETS_PATH: ./
                   PARALLEL_PAGES: 25
                   PARALLEL_DOWNLOADS_PER_PAGE: 3
