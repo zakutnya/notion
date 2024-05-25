@@ -37,10 +37,14 @@ jobs:
                   cache: "yarn"
 
             - name: Install deps
-              run: yarn --cwd ./scrapper/ install
+              run: |
+                  cd ./scrapper
+                  yarn install
 
             - name: Run script
-              run: yarn --cwd ./scrapper/ start
+              run: |
+                  cd ./scrapper
+                  yarn install
 
             - name: Save changes
               uses: stefanzweifel/git-auto-commit-action@v4
