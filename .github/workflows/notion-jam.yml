@@ -16,35 +16,30 @@ on:
 jobs:
     # This workflow contains a single job called "build"
     build:
-        # The type of runner that the job will run on
         runs-on: ubuntu-latest
 
         permissions:
             contents: write
 
-        # Steps represent a sequence of tasks that will be executed as part of the job
         steps:
-            # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
+            - name: Create env file
+              run: |
+                  touch .env
+                  echo NOTION_SECRET = ${{ secrets.NOTION_SECRET }} >> .env
+                  echo NOTION_DB = d3093d5c8d0c499ea68785f14409b144 >> .env
 
-            - name: Get notion posts
-              uses: zakutnya/notion-jam@master
+            - name: Use Node.js
+              uses: actions/setup-node@v3
               with:
-                  NOTION_SECRET: ${{ secrets.NOTION_SECRET }}
-                  NOTION_DATABASE: d3093d5c8d0c499ea68785f14409b144
-                  FILTER_PROP: Status
-                  FILTER_VALUES: Published
-                  CONVERT_PROP_CASE: snake
-                  ARTICLE_PATH: content/posts/{year}/{month}/{day}/{title}.md
-                  ASSETS_PATH: ./
-                  PARALLEL_PAGES: 25
-                  PARALLEL_DOWNLOADS_PER_PAGE: 3
-                  DOWNLOAD_IMAGE_TIMEOUT: 30
-                  SKIP_DOWNLOADED_IMAGES: true
-                  DOWNLOAD_FRONTMATTER_IMAGES: true
+                  node-version: "20.x"
+                  cache: "yarn"
 
-            - name: Install, build, and upload your site
-              uses: withastro/action@v2
+            - name: Install deps
+              run: yarn install
+
+            - name: Run script
+              run: yarn start
 
             - name: Save changes
               uses: stefanzweifel/git-auto-commit-action@v4
