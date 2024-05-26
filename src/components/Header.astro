@@ -3,7 +3,7 @@ import Link from "@components/Link.astro";
 import { SITE } from "@consts";
 ---
 
-<header>
+<header class="page-header">
     <div class="container">
         <div class="flex flex-wrap gap-y-2 justify-between">
             <Link href={import.meta.env.BASE_URL} underline={false}>
@@ -12,15 +12,11 @@ import { SITE } from "@consts";
                 </div>
             </Link>
             <nav class="flex gap-1">
-                <Link href="/blog"> blog </Link>
-                <span>
-                    {`/`}
-                </span>
+                <Link href=`${import.meta.env.BASE_URL}/posts/`>статьи</Link>
+                <span>/</span>
                 <Link href="/work"> work </Link>
-                <span>
-                    {`/`}
-                </span>
-                <Link href="/projects"> projects </Link>
+                <span>/</span>
+                <Link href=`${import.meta.env.BASE_URL}/about`>о проекте</Link>
             </nav>
         </div>
     </div>

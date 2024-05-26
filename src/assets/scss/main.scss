@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "_typography";
+
 html {
     overflow-y: scroll;
     color-scheme: light;
@@ -20,7 +22,7 @@ body {
     @apply font-sans antialiased flex flex-col bg-stone-100 dark:bg-stone-900 text-black/50 dark:text-white/75;
 }
 
-header {
+.page-header {
     @apply fixed top-0 left-1/2 w-full -translate-x-1/2 z-50 py-5 bg-stone-100/75 dark:bg-stone-900/25 backdrop-blur-sm saturate-200;
 }
 

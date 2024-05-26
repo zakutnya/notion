@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+
+let posts = null;
+
+try {
+    posts = await getCollection("posts");
+} catch (e) {
+    console.log(e);
+    //
+}
+---
+
+<Layout title="Posts" description="">
+    <ul class="grid gap-4">
+        {
+            posts &&
+                posts.map((post) => (
+                    <li>
+                        <ArrowCard entry={post} />
+                    </li>
+                ))
+        }
+    </ul>
+</Layout>

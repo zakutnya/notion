@@ -16,35 +16,55 @@ try {
 // https://shayy.org/posts/fts-for-astro
 ---
 
-<Layout title="Welcome to Astro." description="">
+<Layout title="" description="">
     <main>
-        <h4 class="animate font-semibold text-black dark:text-white">
-            Hi, I'm Nano <span class="text-xl">👋🏻</span>
-        </h4>
+        <h2 class="flex align-center">
+            <span class="text-4xl mr-2">🇫🇷</span> Франция<br />Гайд по иммиграции и интеграции
+        </h2>
 
-        <div class="space-y-16">
+        <div class="space-y-16 text-black dark:text-white">
             <section>
                 <article class="space-y-4">
                     <p class="animate">
-                        I am a minimal, seo friendly, accessible portfolio and blog for developers. I am an even more lightweight version of
-                        my popular theme I have a lighthouse scores of 100 across the board for performance, accesibility, best practices
-                        and SEO.
+                        На фоне войны в Украине, репрессий в Беларуси и России и вызванной ими волны массовой эмиграции справочник
+                        Exil&nbsp;Solidaire призван предоставить русскоязычным мигранткам и мигрантам ключевую информацию об интеграции во
+                        Франции.
+                    </p>
+
+                    <div class="animate">
+                        <h4>Цели справочника</h4>
+                        <ul class="ml-0 font-serif leading-6">
+                            <li>помочь сохранить личную траекторию</li>
+                            <li>способствовать успешной интеграции в любой административной ситуации</li>
+                            <li>снизить нагрузку с других ассоциаций, помогающих Украине</li>
+                            <li>дать системное представление о первых годах пути мигрантки/мигранта во Франции</li>
+                        </ul>
+                    </div>
+
+                    <p class="animate">
+                        Более ста подробных статей охватывают все сферы жизни. В них разъясняются административные процедуры, даются ссылки
+                        на полезные источники и ассоциации, предлагаются практические советы и отзывы читательниц и читателей.
                     </p>
                     <p class="animate">
-                        I come packed with full type safety, a sitemap, an rss feed, markdown and mdx support (use components in your
-                        markdown) through astro integrations. I am styled with tailwind and come preconfigured with light, dark and
-                        system/os theme preferences out of the box.
+                        Этот гайд создан группой волонтерок и волонтеров в духе солидарности и взаимопомощи. С 25 марта 2023 по 25 января
+                        2024 года ассоциация Russie-Libertés помогала с запуском проекта.
                     </p>
-                    <p class="animate">Visit to fork the repository, read the docs or one-click deploy on Vercel or Netlify.</p>
+
+                    <h4>Наши ценности</h4>
+                    <ul class="ml-0 font-serif leading-6">
+                        <li>Антивоенная и продемократическая позиция</li>
+                        <li>Солидарность между волнами иммиграции</li>
+                        <li>Межкультурная солидарность русскоязычных</li>
+                    </ul>
                 </article>
             </section>
 
             <section class="animate space-y-6">
                 <div class="flex flex-wrap gap-y-2 items-center justify-between">
-                    <h5 class="font-semibold text-black dark:text-white">Latest posts</h5>
-                    <Link href="/blog"> See all posts </Link>
+                    <h5 class="font-semibold text-black dark:text-white">Последние статьи</h5>
+                    <Link href=`${import.meta.env.BASE_URL}/posts/`>Открыть все</Link>
                 </div>
-                <ul class="flex flex-col gap-4">
+                <ul class="grid gap-4">
                     {
                         posts &&
                             posts.map((post) => (

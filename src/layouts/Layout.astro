@@ -9,18 +9,18 @@ type Props = {
     description: string;
 };
 
-const { title, description = "" } = Astro.props;
+const { title = undefined, description = "" } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
     <head>
-        <Head title={`${title} | ${SITE.NAME}`} description={description} />
+        <Head title=`${title ? title + " | " : ""}${SITE.NAME}` description={description} />
     </head>
     <body>
         <Header />
         <main>
-            <div class="mx-auto max-w-screen-sm px-5">
+            <div class="mx-auto max-w-screen-md px-5">
                 <slot />
             </div>
         </main>
