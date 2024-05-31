@@ -1,15 +1,23 @@
 h1 {
-    @apply text-2xl md:text-4xl font-sans  font-semibold text-black dark:text-white;
+    @apply block mt-5 mb-2 text-2xl md:text-4xl font-sans font-semibold text-black dark:text-white;
 }
 h2 {
-    @apply text-xl md:text-3xl font-sans  font-semibold text-black dark:text-white;
+    @apply block mt-5 mb-2 text-xl md:text-3xl font-sans font-semibold text-black dark:text-white;
 }
 h3 {
-    @apply text-lg md:text-2xl font-sans  font-semibold text-black dark:text-white;
+    @apply block mt-5 mb-2 text-lg md:text-2xl font-sans font-semibold text-black dark:text-white;
 }
 h4 {
-    @apply text-base md:text-xl font-sans  font-semibold text-black dark:text-white;
+    @apply block mt-5 mb-2 text-base md:text-xl font-sans font-semibold text-black dark:text-white;
 }
 h5 {
-    @apply text-base md:text-xl font-sans font-semibold text-black dark:text-white;
+    @apply block mt-5 mb-2 text-base md:text-xl font-sans font-semibold text-black dark:text-white;
+}
+
+ul {
+    @apply mt-2 mb-3 list-disc list-inside;
+}
+
+a {
+    @apply underline underline-offset-2;
 }

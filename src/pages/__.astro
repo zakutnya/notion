@@ -1,0 +1,139 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import Link from "@components/Link.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+
+let posts = null;
+
+try {
+    posts = await getCollection("posts");
+} catch (e) {
+    console.log(e);
+    //
+}
+// TODO: https://blog.otterlord.dev/posts/astro-search/
+// https://shayy.org/posts/fts-for-astro
+---
+
+<Layout title="" description="">
+    <main>
+        <h2 class="flex align-center">
+            <span class="text-4xl mr-2">🇫🇷</span> Франция<br />Гайд по иммиграции и интеграции
+        </h2>
+
+        <div class="space-y-16 text-black dark:text-white">
+            <section>
+                <article class="space-y-4">
+                    <p class="animate">
+                        На фоне войны в Украине, репрессий в Беларуси и России и вызванной ими волны массовой эмиграции справочник
+                        Exil&nbsp;Solidaire призван предоставить русскоязычным мигранткам и мигрантам ключевую информацию об интеграции во
+                        Франции.
+                    </p>
+
+                    <div class="animate">
+                        <h4>Цели справочника</h4>
+                        <ul class="ml-0 font-serif leading-6">
+                            <li>помочь сохранить личную траекторию</li>
+                            <li>способствовать успешной интеграции в любой административной ситуации</li>
+                            <li>снизить нагрузку с других ассоциаций, помогающих Украине</li>
+                            <li>дать системное представление о первых годах пути мигрантки/мигранта во Франции</li>
+                        </ul>
+                    </div>
+
+                    <p class="animate">
+                        Более ста подробных статей охватывают все сферы жизни. В них разъясняются административные процедуры, даются ссылки
+                        на полезные источники и ассоциации, предлагаются практические советы и отзывы читательниц и читателей.
+                    </p>
+                    <p class="animate">
+                        Этот гайд создан группой волонтерок и волонтеров в духе солидарности и взаимопомощи. С 25 марта 2023 по 25 января
+                        2024 года ассоциация Russie-Libertés помогала с запуском проекта.
+                    </p>
+
+                    <h4>Наши ценности</h4>
+                    <ul class="ml-0 font-serif leading-6">
+                        <li>Антивоенная и продемократическая позиция</li>
+                        <li>Солидарность между волнами иммиграции</li>
+                        <li>Межкультурная солидарность русскоязычных</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section class="animate space-y-6">
+                <div class="flex flex-wrap gap-y-2 items-center justify-between">
+                    <h5 class="font-semibold text-black dark:text-white">Последние статьи</h5>
+                    <Link href=`${import.meta.env.BASE_URL}/posts/`>Открыть все</Link>
+                </div>
+                <ul class="grid gap-4">
+                    {
+                        posts &&
+                            posts.map((post) => (
+                                <li>
+                                    <ArrowCard entry={post} />
+                                </li>
+                            ))
+                    }
+                </ul>
+            </section>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    main {
+        margin: auto;
+        padding: 1rem;
+        width: 800px;
+        max-width: calc(100% - 2rem);
+        color: white;
+        font-size: 20px;
+        line-height: 1.6;
+    }
+    .astro-a {
+        position: absolute;
+        top: -32px;
+        left: 50%;
+        transform: translatex(-50%);
+        width: 220px;
+        height: auto;
+        z-index: -1;
+    }
+    h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+        margin-bottom: 1em;
+    }
+    .text-gradient {
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 400%;
+        background-position: 0%;
+    }
+    .instructions {
+        margin-bottom: 2rem;
+        border: 1px solid rgba(var(--accent-light), 25%);
+        background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
+        padding: 1.5rem;
+        border-radius: 8px;
+    }
+    .instructions code {
+        font-size: 0.8em;
+        font-weight: bold;
+        background: rgba(var(--accent-light), 12%);
+        color: rgb(var(--accent-light));
+        border-radius: 4px;
+        padding: 0.3em 0.4em;
+    }
+    .instructions strong {
+        color: rgb(var(--accent-light));
+    }
+    .link-card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+        gap: 2rem;
+        padding: 0;
+    }
+</style>

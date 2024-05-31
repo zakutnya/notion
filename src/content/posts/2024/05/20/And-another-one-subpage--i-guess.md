@@ -8,8 +8,6 @@ year: '2024'
 Tags: []
 Status: Published
 ID: ABO-6
-time_updated: 2024-05-24T20:20:00.000Z
-time_created: 2024-05-20T06:17:00.000Z
 time: '06:17'
 day: '20'
 Title: And another one subpage, i guess
