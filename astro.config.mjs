@@ -10,8 +10,8 @@ export default defineConfig({
         port: 3000
     },
     site: 'https://zakutnya.github.io',
-    base: '/',
-    trailingSlash: "ignore",
+    base: '',
+    trailingSlash: "always",
     integrations: [mdx(), tailwind(), pagefind()],
     build: {
         format: "file",
