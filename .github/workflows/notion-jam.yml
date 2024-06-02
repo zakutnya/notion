@@ -25,10 +25,10 @@ jobs:
             - uses: actions/checkout@v4
             - name: Create env file
               run: |
-                  cd scrapper/
                   touch .env
                   echo NOTION_SECRET = ${{ secrets.NOTION_SECRET }} >> .env
-                  echo NOTION_DB = d3093d5c8d0c499ea68785f14409b144 >> .env
+                  echo NOTION_DB_PAGES = 82012c710d73406287034a59314e2fa6 >> .env
+                  echo NOTION_DB_POSTS = 925574309d944f5c8487cf8e2cd7a35e >> .env
 
             - name: Use Node.js
               uses: actions/setup-node@v3
