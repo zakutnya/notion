@@ -17,7 +17,7 @@ const pages = await getCollection("pages");
             </Link>
             <PageFind />
             <nav class="flex gap-1 lowercase [&_a]:underline">
-                <Link href=`${import.meta.env.BASE_URL}posts/`>статьи</Link>
+                <Link href=`/posts`>статьи</Link>
                 {
                     pages &&
                         pages.length &&
@@ -25,7 +25,7 @@ const pages = await getCollection("pages");
                             page.data.Title != "Index" ? (
                                 <>
                                     <span>/</span>
-                                    <Link href={`${import.meta.env.BASE_URL}/${page.slug}/`}> {page.data.Title} </Link>
+                                    <Link href={`/${page.slug}`}> {page.data.Title} </Link>
                                 </>
                             ) : (
                                 ""
