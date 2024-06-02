@@ -10,8 +10,8 @@ export default defineConfig({
         port: 3000
     },
     site: 'https://zakutnya.github.io',
-    base: '/notion/',
-    trailingSlash: "never",
+    base: '/',
+    trailingSlash: "ignore",
     integrations: [mdx(), tailwind(), pagefind()],
     build: {
         format: "file",
