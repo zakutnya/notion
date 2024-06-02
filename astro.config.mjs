@@ -14,6 +14,6 @@ export default defineConfig({
     trailingSlash: "ignore",
     integrations: [mdx(), tailwind(), pagefind()],
     build: {
-        format: "file"
+        format: "file",
     }
 });
